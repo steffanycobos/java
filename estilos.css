@@ -1,7 +1,10 @@
 
 
-h1 {color: rgba(105, 10, 193, 0.804);
+h1 {color: rgba(41, 77, 176, 0.804);
     background-color:rgb(255, 255, 255);
 }
 
-h2 { color: rgba(137, 43, 226, 0.968);}
+h2 { color: rgba(41, 77, 176, 0.804);}
+
+p{
+    text-align: justify;}
