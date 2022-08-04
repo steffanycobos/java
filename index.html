@@ -6,22 +6,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>JavaScript</title>
 </head>
 
 <body>
-    <h1>JAVASCRIPT</h1>
-    <h2>PRIMERA PRE ENTREGA DE PROYECTO</h2>
-    <p>Salón de clases con 20 alumnos de los cuales esta registrado su id, nombre y edad.
-        Se le pide al usuario escoger entre una de las opciones.
-        En la 1ra opción se saca el promedio de un alumno ubicado por su id, en donde se pide las cantidad de materias
-        que cursó, y las notas de cada uno, para asi sacar el promedio.
-        En la 2da opción se da un listado de los alumnos por orden alfabético  o por orden de edad de menor a mayor según escoja el usuario.
-        Y en la 3ra, se da la opción de buscar a los alumnos segun su edad.
-    </p>
 
+    <h1 id="titulo" onclick="saludo()">JAVASCRIPT</h1>
+    <h2>DESAFIO DE EVENTOS</h2>
+
+<!-------------------------------------------------------------- BOTON DE PROMEDIO-------------------------------------------- -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Promedio
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <label for="staticEmail2" class="sr-only"> Ingrese ID</label>
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingrese ID">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputPassword2" class="sr-only">ID </label>
+                        <input id="id" type="number" class="form-control" id="inputPassword2" placeholder="ID">
+                    </div>
+
+
+                    <label for="staticEmail2" class="sr-only"> Asignaturas Cursadas </label>
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail2"
+                        value="Asignaturas Cursadas">
+
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputPassword2" class="sr-only"> asignaturas </label>
+                        <input id="asig" type="number" class="form-control" id="inputPassword2"
+                            placeholder="Asignaturas">
+                    </div>
+                    <button id="promedio2" onclick="prom()" type="submit"
+                        class="btn btn-primary mb-2">Buscar</button>
+                </form>
+            </a>
+
+        </div>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------->
+
+<!-- BOTON DE LISTADO -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Listado
+        </button>
+        <div class="dropdown-menu">
+
+            <div class="list-group">
+                <a onclick="ordenAlfabetico(salon)" class="dropdown-item" href="#">Por Nombre</a>
+                <a onclick="ordenNumerico(salon)" class="dropdown-item" href="#">Por Edad</a>
+            </div>
+        
+        </div>
+    </div>
+  <!--------------------------------------------------------------------------------------------------------------->
+
+    <!-- BOTON DE BUSQUEDA POR EDAD-->
+    <div class="btn-group">
+        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Busqueda por edad
+        </button>
+        <div class="dropdown-menu">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class="sr-only"> Edad</label>
+                <input id="edad"  type="number" class="form-control" id="inputPassword2" placeholder="edad">
+            </div>
+            <button onclick="edades()"  id="edad2" type="submit"
+                class="btn btn-primary mb-2">Buscar</button>
+
+        </div>
+
+  <!--------------------------------------------------------------------------------------------------------------->
 
 </body>
 <script src="js/alumnos.js"></script>
 <script src="js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
 </html>

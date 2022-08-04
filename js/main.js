@@ -4,7 +4,7 @@ const arraydemateria = [];
 const salon = [];
 salon.push(new Alumnos(1, "Maria Lopez", 25, arraydemateria))
 salon.push(new Alumnos(2, "Pedro Perez", 32, arraydemateria))
-salon.push(new Alumnos(3, "Juan Rpdriguez", 17, arraydemateria))
+salon.push(new Alumnos(3, "Juan Rodriguez", 17, arraydemateria))
 salon.push(new Alumnos(4, "Luisa Palacios", 19, arraydemateria))
 salon.push(new Alumnos(5, "Cristian Sanchez", 26, arraydemateria))
 salon.push(new Alumnos(6, "Camila Andrade", 15, arraydemateria))
@@ -50,12 +50,98 @@ function ordenNumerico(aula) {
     })
     console.log(salon.map((el) => el.nombre + " " + el.edad));
 }
-//////////////////////////////////////////////////////////////////
+
+function prom(){
+    let alumnoid=document.getElementById("id").value;
+   
+numMaterias = document.getElementById("asig").value;
+if (alumnoid > 20) {
+    alert("Ingresa un id válido. ");
+}
+else {
+    let notas;
+    let asignatura;
+
+    for (let i = 1; i <= numMaterias; i++) {
+        asignatura = String(prompt("Ingrese asignatura:"));
+        notas = parseFloat(prompt("Ingrese su nota en " + asignatura));
+        arraydemateria.push({ asignatura, notas });
+    }
+    console.log(salon[(alumnoid) - 1]);
+    ////////PROMEDIO////////////
+    suma = arraydemateria.map(item => item.notas).reduce((prev, curr) => prev + curr, 0);
+    prom = suma / numMaterias
+}
+if (prom >= 5) {
+    console.log(" Aprobaste con un promedio de: " + prom);
+}
+else {
+    console.log("No aprobaste. Tu promedio fue de: " + prom);
+}
+
+}
+
+function edades(){
+    let ed = document.getElementById("edad").value;
+    const edad = salon.filter((el) => el.edad == ed);
+
+    if (edad.length == 0) {
+        alert("No hay nadie con esa edad");
+    }
+    else {
+        console.log("Los alumnos con " + ed + " años son:");
+        console.log(edad);
+    };
+}
+
+function saludo(){
+    alert ("Hola! Abre la consola para visualizar lo que estas requiriendo")
+}
+//////////////////////////////////////////////////////////////////*/
+
+
+for (const alumno of salon) {
+    let contenedor = document.createElement("div");
+    
+    contenedor.innerHTML = `<h5> Nombre: ${alumno.nombre}</h5>
+                            <p>  id: ${alumno.id}</p>
+                            <p> edad: ${alumno.edad}</p>`;
+ document.body.appendChild(contenedor);
+}
+
+
+var inputEdad = document.getElementById("edad");
+inputEdad.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("edad2").click();
+  }
+});
+
+
+/*function listado(){
+    let num = parseInt((prompt("Desea el listado por: \n 1. Orden alfabético. \n 2. Edades de menor a mayor")));
+        //ordenAlfabetico(salon);
+        switch (num) {
+            case 1:
+                ordenAlfabetico(salon);
+                break;
+
+            case 2:
+                ordenNumerico(salon);
+                break;
+        }
+        if (num>2){
+            alert("Opción no válida.");
+        }
+  
+}
+*/
 
 
 ////////////////////////////////////////////////// PROGRAMA /////////////////////////////////
 
-let opc = parseInt(prompt("¿Qué desea realizar?\n 1. Conocer Promedio de un alumno. \n 2. Listado de Alumnos registrados. \n 3. Listado de alumnos por edad ingresada."));
+/*let opc = parseInt(prompt("¿Qué desea realizar?\n 1. Conocer Promedio de un alumno. \n 2. Listado de Alumnos registrados. \n 3. Listado de alumnos por edad ingresada."));
 
 switch (opc) {
 
@@ -121,3 +207,5 @@ switch (opc) {
 if (opc > 3) {
     alert("Opción no valida.");
 }
+
+*/

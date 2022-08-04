@@ -2,9 +2,11 @@
 
 h1 {color: rgba(41, 77, 176, 0.804);
     background-color:rgb(255, 255, 255);
+    margin: 20px;
 }
 
-h2 { color: rgba(41, 77, 176, 0.804);}
+h2 { color: rgba(41, 77, 176, 0.804);
+margin-bottom: 30px;}
 
 p{
     text-align: justify;}
