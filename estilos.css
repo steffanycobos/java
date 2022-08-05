@@ -1,12 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@500&family=Bangers&family=Gloria+Hallelujah&family=Life+Savers&family=Mochiy+Pop+One&family=Passion+One&family=Permanent+Marker&family=Roboto:wght@100&family=Rock+Salt&display=swap');
 
-
-h1 {color: rgba(41, 77, 176, 0.804);
-    background-color:rgb(255, 255, 255);
-    margin: 20px;
+h1 {
+    font-family: 'Mochiy Pop One', sans-serif;
+    text-align: center;
+  padding-top: 14%;
+    
 }
 
-h2 { color: rgba(41, 77, 176, 0.804);
-margin-bottom: 30px;}
+h2 {
+    font-family: 'Mochiy Pop One', sans-serif;
+    text-align: center;}
+    
 
 p{
     text-align: justify;}
+
+    section{
+        align-items: center;
+        margin-left: 36%;
+        margin-top: 20px;
+    }
+
+    
+    .btn-primaryprom {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #f8f9fa;
+    }
+    .btn-primaryedad {
+        color: #fff;
+        background-color: green;
+        border-color: #f8f9fa;
+    }
+    a {
+        color: yellow;
+        text-decoration: none;
+        background-color: transparent;
+    } 
+body{
+    background-image: url("https://images.unsplash.com/photo-1510531704581-5b2870972060?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80");
+    background-size: cover;
+}

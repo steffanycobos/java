@@ -100,7 +100,7 @@ function saludo(){
 }
 //////////////////////////////////////////////////////////////////*/
 
-
+/*
 for (const alumno of salon) {
     let contenedor = document.createElement("div");
     
@@ -108,7 +108,7 @@ for (const alumno of salon) {
                             <p>  id: ${alumno.id}</p>
                             <p> edad: ${alumno.edad}</p>`;
  document.body.appendChild(contenedor);
-}
+}*/
 
 /// EVENTOS (Hace que al presionar ENTER en la opcion de busqueda por edad, se active la opcion de Buscar sin darle al click con el mouse)//////
 var inputEdad = document.getElementById("edad");
