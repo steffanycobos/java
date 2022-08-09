@@ -13,79 +13,21 @@
 
 <body>
 
-    <h1 id="titulo" onclick="saludo()">JAVASCRIPT</h1>
+    <h1 id="titulo" onclick="saludo()">CODERHOUSE JAVASCRIPT</h1>
    
 
     <section>
 <!-------------------------------------------------------------- BOTON DE PROMEDIO-------------------------------------------- -->
-    <div class="btn-group">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Promedio
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">
-                <form class="form-inline">
-                    <div class="form-group mb-2">
-                        <label for="staticEmail2" class="sr-only"> Ingrese ID</label>
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingrese ID">
-                    </div>
-                    <div class="form-group mx-sm-3 mb-2">
-                        <label for="inputPassword2" class="sr-only">ID </label>
-                        <input id="id" type="number" class="form-control" id="inputPassword2" placeholder="ID">
-                    </div>
-
-
-                    <label for="staticEmail2" class="sr-only"> Asignaturas Cursadas </label>
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail2"
-                        value="Asignaturas Cursadas">
-
-                    <div class="form-group mx-sm-3 mb-2">
-                        <label for="inputPassword2" class="sr-only"> asignaturas </label>
-                        <input id="asig" type="number" class="form-control" id="inputPassword2"
-                            placeholder="Asignaturas">
-                    </div>
-                    <button id="promedio2" onclick="prom()" type="submit"
-                        class=" btn-primaryprom btn  mb-2">Buscar</button>
-                </form>
-            </a>
-
-        </div>
-    </div>
+<a href="./secciones/promedio.html" class="btn btn-primaryprom btn-lg active" role="button" aria-pressed="true">Promedio</a>
+      
     <!--------------------------------------------------------------------------------------------------------------->
 
 <!-- BOTON DE LISTADO -->
-    <div class="btn-group">
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Listado
-        </button>
-        <div class="dropdown-menu">
-
-            <div class="list-group">
-                <a onclick="ordenAlfabetico(salon)" class="dropdown-item" href="#">Por Nombre</a>
-                <a onclick="ordenNumerico(salon)" class="dropdown-item" href="#">Por Edad</a>
-            </div>
-        
-        </div>
-    </div>
+<a href="./secciones/listado.html" class="btn btn-primarylistado btn-lg active" role="button" aria-pressed="true">Listado</a>
   <!--------------------------------------------------------------------------------------------------------------->
 
     <!-- BOTON DE BUSQUEDA POR EDAD-->
-    <div class="btn-group">
-        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Busqueda por edad
-        </button>
-        <div class="dropdown-menu">
-            <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class="sr-only"> Edad</label>
-                <input id="edad"  type="number" class="form-control" id="inputPassword2" placeholder="edad">
-            </div>
-            <button onclick="edades()"  id="edad2" type="submit"
-                class="btn btn-primaryedad mb-2">Buscar</button>
-
-        </div>
+    <a href="./secciones/edad.html" class="btn btn-primaryedad btn-lg active" role="button" aria-pressed="true">Búsqueda por Edades</a>
     </section>
   <!--------------------------------------------------------------------------------------------------------------->
 
