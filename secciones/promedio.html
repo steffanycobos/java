@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../estilos.css">
+    <title>Promedio</title>
+</head>
+<body>
+    <section>
+        <a href="../index.html" class="btn btn-light" role="button" aria-pressed="true">Home</a>
+        <a href="listado.html" class="btn btn-primarylistado" role="button" aria-pressed="true">Listado</a>
+        <a href="registro.html" class="btn btn-primaryreg" role="button" aria-pressed="true">Registro de Alumno</a>
+        <a href="edad.html" class="btn btn-primaryedad" role="button" aria-pressed="true">Búsqueda por Edad</a>
+    </section>
+
+    <div class="form-group mb-2 listado">
+        <label for="staticEmail2" class="sr-only">Ingrese ID </label>
+        <input type="text" id="enterprom" readonly class="form-control-plaintext" id="staticEmail2" value="Ingrese ID">
+
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only">ID </label>
+            <input id="id" type="number" class="form-control" id="inputPassword2" placeholder="ID">
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="staticEmail2" class="sr-only"> N° Asignaturas Cursadas</label>
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Asignaturas Cursadas">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label class="sr-only">Matemática</label>
+            <input id="mate" type="number" class="form-control" placeholder="Matemática">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label class="sr-only"> Física</label>
+            <input id="fisica" type="number" class="form-control" placeholder="Física">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label class="sr-only">Química</label>
+            <input id="quimica" type="number" class="form-control" placeholder="Química">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label class="sr-only">Ciencias</label>
+            <input id="ciencias" type="number" class="form-control" placeholder="Ciencias Naturales">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label class="sr-only">Historia</label>
+            <input id="historia" id="enterprom" type="number" class="form-control" placeholder="Historia">
+        </div>
+
+
+        <button onclick="prom()" id="promedio2" type="submit" class="btn btn-primaryprom mb-2">Buscar</button>
+
+
+
+
+    </div>
+
+
+
+</body>
+
+<script src="../js/alumnos.js"></script>
+<script src="../js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+
+</html>
