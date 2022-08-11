@@ -77,7 +77,7 @@ function nuevo() {
     localStorage.setItem("Edad", JSON.stringify(arrayEdades))
 
     let alerta= document.createElement("h3")
-alerta.innerHTML="Ya quedo registrado el nuevo alumno"
+alerta.innerHTML="Ya quedo registrado el nuevo alumno. Tu ID es: "+id
 document.body.append(alerta)
 }
 let arrayEdadesLS = JSON.parse(localStorage.getItem("Edad"))
