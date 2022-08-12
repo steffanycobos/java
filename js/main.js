@@ -59,7 +59,7 @@ function eliminar(seccion) {
 //                        NUEVO REGISTRO DE ALUMNO (Lo guarda en el LocalStorage)                                           //
 function nuevo() {
     nombre = String(document.getElementById("nombre").value).toLocaleUpperCase()
-    id = (salon.length) + 1
+    id = (salon.length) ++ //OPTIMIZACION
     edad = parseFloat(document.getElementById("registroedad").value)
     arrayEdades.push({
         id,
@@ -153,7 +153,7 @@ function prom() {
     };
     ////////  PROMEDIO 
 
-    const escribeid = salonLS[(alumnoid - 1)]
+    const escribeid = salonLS[(--alumnoid)] //OPTIMIZACION
     let contenedor1 = document.createElement("div");
 
 
