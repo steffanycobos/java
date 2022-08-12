@@ -88,8 +88,24 @@ console.log(arrayEdadesLS, salonLS)
 
 //                                              LISTADO                                            ///
 function ordenAlfabetico() {
-    //salon=salonLS
-    salonLS.sort((a, b) => {
+    if (salonLS== null){
+    salon.sort((a, b) => {
+        if (a.nombre > b.nombre) {
+            return 1;
+        } else if (a.nombre < b.nombre) {
+            return -1;
+        } else {
+            return 0;
+        }
+    })
+    let alfabetico = document.createElement("p");
+    alfabetico.className = "eliminar"
+    alfabetico.innerHTML = (((salon.map((el) => el.nombre)).join("<br>")));;
+    document.body.append(alfabetico);
+
+    eliminar(alfabetico)}
+    else {
+        salonLS.sort((a, b) => {
         if (a.nombre > b.nombre) {
             return 1;
         } else if (a.nombre < b.nombre) {
@@ -103,11 +119,14 @@ function ordenAlfabetico() {
     alfabetico.innerHTML = (((salonLS.map((el) => el.nombre)).join("<br>")));;
     document.body.append(alfabetico);
 
-    eliminar(alfabetico)
-}
+    eliminar(alfabetico)}
+        
+    }
+
 
 function ordenNumerico() {
-    salonLS.sort((a, b) => {
+    if (salonLS==null){
+    salon.sort((a, b) => {
         if (a.edad > b.edad) {
             return 1;
         } else if (a.edad < b.edad) {
@@ -118,9 +137,25 @@ function ordenNumerico() {
     })
 
     let numerico = document.createElement("p");
+    numerico.innerHTML = ((salon.map((el) => el.nombre + " " + el.edad)).join("<br>"));
+    document.body.append(numerico);
+    eliminar(numerico)
+
+} else{
+    salonLS.sort((a, b) => {
+    if (a.edad > b.edad) {
+        return 1;
+    } else if (a.edad < b.edad) {
+        return -1;
+    } else {
+        return 0;
+    }
+})
+let numerico = document.createElement("p");
     numerico.innerHTML = ((salonLS.map((el) => el.nombre + " " + el.edad)).join("<br>"));
     document.body.append(numerico);
     eliminar(numerico)
+}
 
 }
 
