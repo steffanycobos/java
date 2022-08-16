@@ -59,8 +59,14 @@ function eliminar(seccion) {
 //                        NUEVO REGISTRO DE ALUMNO (Lo guarda en el LocalStorage)                                           //
 function nuevo() {
     nombre = String(document.getElementById("nombre").value).toLocaleUpperCase()
-    id = (salon.length) ++ //OPTIMIZACION
     edad = parseFloat(document.getElementById("registroedad").value)
+    id = (arrayEdades.length) + 1 //OPTIMIZACION
+   
+    
+    if (nombre=="" || edad=="") { swal("Es necesario poner Nombre y Edad","" ,"warning");}
+    
+  
+    else{
     arrayEdades.push({
         id,
         nombre,
@@ -72,14 +78,11 @@ function nuevo() {
         edad,
         arraydemateria
     })
-
     localStorage.setItem("Salon", JSON.stringify(salon))
     localStorage.setItem("Edad", JSON.stringify(arrayEdades))
 
-    let alerta= document.createElement("h3")
-alerta.innerHTML="Ya quedo registrado el nuevo alumno. Tu ID es: "+id
-document.body.append(alerta)
-}
+    swal("Ya quedaste registrado!", "Tu ID es: "+ id, "success");
+}}
 let arrayEdadesLS = JSON.parse(localStorage.getItem("Edad"))
 let salonLS = JSON.parse(localStorage.getItem("Salon"))
 console.log(arrayEdadesLS, salonLS)
@@ -113,7 +116,7 @@ function ordenAlfabetico() {
         } else {
             return 0;
         }
-    })
+    })}
     let alfabetico = document.createElement("p");
     alfabetico.className = "eliminar"
     alfabetico.innerHTML = (((salonLS.map((el) => el.nombre)).join("<br>")));;
@@ -121,11 +124,11 @@ function ordenAlfabetico() {
 
     eliminar(alfabetico)}
         
-    }
+    
 
 
 function ordenNumerico() {
-    if (salonLS==null){
+    if (salonLS===null){
     salon.sort((a, b) => {
         if (a.edad > b.edad) {
             return 1;
@@ -187,7 +190,41 @@ function prom() {
 
     };
     ////////  PROMEDIO 
+    if (salonLS===null){
+    const escribeid = salon[(--alumnoid)] //OPTIMIZACION
+    let contenedor1 = document.createElement("div");
 
+
+    suma = (mate) + (fisica) + (quimica) + (ciencias) + (historia);
+    prome = suma / 5;
+
+    if (prome >= 5) {
+        let aprob = document.createElement("div");
+        aprob.className = "formatoEdad"
+        aprob.innerHTML = " Aprobaste con un promedio de: " + prome
+        document.body.appendChild(aprob);
+        eliminar(aprob)
+    } else {
+        let desaprob = document.createElement("div");
+        desaprob.className = "formatoEdad"
+        desaprob.innerHTML = " Desaprobaste. Tu promedio fue de: " + prome
+        document.body.appendChild(desaprob);
+        eliminar(desaprob)
+    }
+    contenedor1.innerHTML = `<p> Nombre: ${escribeid.nombre}<br>
+                               ID: ${escribeid.id}<br>
+                              Edad: ${escribeid.edad}</p>`;
+    document.body.appendChild(contenedor1);
+
+    var inputPromedio = document.getElementById("enterprom");
+    inputPromedio.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("promedio2").click();
+        }
+    });
+    eliminar(contenedor1)
+} else {
     const escribeid = salonLS[(--alumnoid)] //OPTIMIZACION
     let contenedor1 = document.createElement("div");
 
@@ -221,12 +258,13 @@ function prom() {
         }
     });
     eliminar(contenedor1)
-}
+}}
 
 
 ////////////////////////////////////         EDADES             //////////////////////////////////////////////////////
 function edades() {
     let ed = document.getElementById("edad").value;
+    if (arrayEdadesLS!= null){
 
     const edad = arrayEdadesLS.filter((el) => el.edad == ed);
     var inputEdad = document.getElementById("edad")
@@ -256,3 +294,69 @@ function edades() {
         }
     }
 }
+else {
+    const edad = arrayEdades.filter((el) => el.edad == ed);
+    var inputEdad = document.getElementById("edad")
+    inputEdad.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("edad2").click();
+        }
+    });
+
+    if (edad.length == 0) {
+
+        let div1 = document.getElementById("edad1")
+        div1.innerHTML = "<h3>No hay nadie con esa edad</h3>"
+
+    } else {
+
+        for (const alumno of edad) {
+            let contenedor = document.createElement("div");
+
+            contenedor.innerHTML = `<p> Nombre: ${alumno.nombre} <br>
+                            ID: ${alumno.id}<br>
+                             Edad: ${alumno.edad}</p>`;
+            document.body.appendChild(contenedor);
+
+            eliminar(contenedor)
+        }
+    }
+
+}}
+///////////////////////////////////                     ANIMACIONES                          //////////////////////////////
+var textWrapper = document.querySelector('.ml9 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml9 .letter',
+    scale: [0, 1],
+    duration: 1500,
+    elasticity: 600,
+    delay: (el, i) => 45 * (i+1)
+  }).add({
+    targets: '.ml9',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
