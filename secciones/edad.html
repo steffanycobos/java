@@ -11,37 +11,41 @@
 </head>
 <body>
     <section>
-    <a href="../index.html" class="btn btn-light" role="button" aria-pressed="true">Home</a>
-    <a href="listado.html" class="btn btn-primarylistado" role="button" aria-pressed="true">Listado</a>
-    <a  href="registro.html" class="btn btn-primaryreg" role="button" aria-pressed="true">Registro de Alumno</a>
-    <a href="promedio.html" class="btn btn-primaryprom" role="button" aria-pressed="true">Promedio</a>
+    <a href="../index.html" class="btn btn-light" role="button" aria-pressed="true">Home
+        <img src="https://img.icons8.com/stickers/32/000000/home-page.png"/>
+    </a>
+    <a href="listado.html" class="btn btn-primarylistado" role="button" aria-pressed="true">Listado
+        <img src="https://img.icons8.com/stickers/32/000000/scroll.png"/>
+    </a>
+    <a  href="registro.html" class="btn btn-primaryreg" role="button" aria-pressed="true">Registro de Alumno
+        <img src="https://img.icons8.com/stickers/32/000000/add-user-male.png"/>
+    </a>
+    <a href="promedio.html" class="btn btn-primaryprom" role="button" aria-pressed="true">Promedio
+        <img src="https://img.icons8.com/stickers/32/000000/calculator.png"/>
+    </a>
     </section>
+
+
 <div class="listado bonito">
-    <div >
-      
-        <div class="form-group mb-2 >
-            <label for="staticEmail2" class="sr-only"></label>
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Búsqueda por Edad">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <label for="inputPassword2" class="sr-only">Edad </label>
-            <input  type="number" id="edad" class="form-control" id="inputPassword2" placeholder="Edad">
-        </div>
 
-            <button  onclick="edades()" id="edad2" type="submit"
-                class="btn btn-primaryedad btn-lg mb-2">Buscar</button>
-
+    <div class="form-group mb-2">
+        <h3>Búsqueda por Edad</h3>
+    </div>
+    
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="inputPassword2" class="sr-only">Edad </label>
+        <input type="number" id="edad" class="form-control" id="inputPassword2" placeholder="Edad">
     </div>
 
+    <button onclick="edades()" id="edad2" type="submit" class="btn btn-primaryedad btn-lg mb-2">Buscar</button>
 
-<div id="edad1" class="formatoEdad">
-    
 </div>
 
 </body>
 
 <script src="../js/alumnos.js"></script>
 <script src="../js/main.js"></script>
+<script src="../js/animaciones.js"></script>
 
 <!--     BOOTSTRAP    -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

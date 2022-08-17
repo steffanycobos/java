@@ -59,11 +59,11 @@ function eliminar(seccion) {
 //                        NUEVO REGISTRO DE ALUMNO (Lo guarda en el LocalStorage)                                           //
 function nuevo() {
     nombre = String(document.getElementById("nombre").value).toLocaleUpperCase()
-    edad = parseFloat(document.getElementById("registroedad").value)
+    edad = Number(document.getElementById("registroedad").value)
     id = (arrayEdades.length) + 1 //OPTIMIZACION
    
     
-    if (nombre=="" || edad=="") { swal("Es necesario poner Nombre y Edad","" ,"warning");}
+    if (nombre==!String || edad==! Number) { swal("Es necesario poner Nombre y Edad","" ,"warning");}
     
   
     else{
@@ -85,7 +85,7 @@ function nuevo() {
 }}
 let arrayEdadesLS = JSON.parse(localStorage.getItem("Edad"))
 let salonLS = JSON.parse(localStorage.getItem("Salon"))
-console.log(arrayEdadesLS, salonLS)
+
 
 /// Todo lo que hace el programa a partir de aqui lo hace con "salonLS" y "arrayEdadesLS" en caso de que se haya registrado un nuevo alumno
 
@@ -119,7 +119,7 @@ function ordenAlfabetico() {
     })}
     let alfabetico = document.createElement("p");
     alfabetico.className = "eliminar"
-    alfabetico.innerHTML = (((salonLS.map((el) => el.nombre)).join("<br>")));;
+    alfabetico.innerHTML = ((salonLS.map((el) => el.nombre.toLocaleUpperCase())).join("<br>"));
     document.body.append(alfabetico);
 
     eliminar(alfabetico)}
@@ -178,11 +178,11 @@ function prom() {
 
         arraydemateria = [];
 
-        mate = parseFloat(document.getElementById("mate").value)
-        fisica = parseFloat(document.getElementById("fisica").value)
-        quimica = parseFloat(document.getElementById("quimica").value)
-        ciencias = parseFloat(document.getElementById("ciencias").value)
-        historia = parseFloat(document.getElementById("historia").value)
+        mate = Number(document.getElementById("mate").value)
+        fisica = Number(document.getElementById("fisica").value)
+        quimica = Number(document.getElementById("quimica").value)
+        ciencias = Number(document.getElementById("ciencias").value)
+        historia = Number(document.getElementById("historia").value)
 
 
         arraydemateria.push(mate, fisica, quimica, ciencias, historia);
@@ -276,9 +276,7 @@ function edades() {
     });
 
     if (edad.length == 0) {
-
-        let div1 = document.getElementById("edad1")
-        div1.innerHTML = "<h3>No hay nadie con esa edad</h3>"
+         swal("No hay ningún alumno con " + ed +" años.","" ,"info");
 
     } else {
 
@@ -324,39 +322,3 @@ else {
     }
 
 }}
-///////////////////////////////////                     ANIMACIONES                          //////////////////////////////
-var textWrapper = document.querySelector('.ml9 .letters');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml9 .letter',
-    scale: [0, 1],
-    duration: 1500,
-    elasticity: 600,
-    delay: (el, i) => 45 * (i+1)
-  }).add({
-    targets: '.ml9',
-    opacity: 0,
-    duration: 1000,
-    easing: "easeOutExpo",
-    delay: 1000
-  });
-
-  (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
