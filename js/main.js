@@ -32,7 +32,7 @@ const arrayEdades = [
     {id:7, nombre:"Leonardo Mares",edad:25 },
     {id:8, nombre:"Maximiliano Alvarez",edad:38 },
     {id:9, nombre:"Alejandra Velasco",edad:39 },
-    {id:10, nombre:"Leandra Vegas",edad:1},
+    {id:10, nombre:"Leandra Vegas",edad:19},
     {id:11, nombre:"Pablo Uribe",edad:24 },
     {id:12, nombre:"Jennifer Hurtado",edad:27 },
     {id:13, nombre:"Matias Cabrera",edad:32 },
@@ -44,6 +44,20 @@ const arrayEdades = [
     {id:19, nombre:"Tomas Enrique",edad:29 },
     {id:20, nombre:"Maria Lopez",edad:30}
     ];
+
+
+////////////////////            FETCH                        //////////////////////
+function lista(){
+fetch ('data/archivo.json')
+.then (response => response.json())
+.then ((archivo) => archivo.forEach((alumno) => {
+    const li= document.createElement("div")
+    li.innerHTML=`<p> Nombre: ${alumno.nombre} <br>
+    ID: ${alumno.id}<br>
+     Edad: ${alumno.edad}</p>`;
+    document.body.appendChild(li)
+}))}
+
 
 
 ////////////////////////////////////                    FUNCIONES                  ////////////////////////////////////
@@ -88,6 +102,10 @@ let salonLS = JSON.parse(localStorage.getItem("Salon"))
 
 
 /// Todo lo que hace el programa a partir de aqui lo hace con "salonLS" y "arrayEdadesLS" en caso de que se haya registrado un nuevo alumno
+
+
+
+
 
 //                                              LISTADO                                            ///
 function ordenAlfabetico() {
@@ -172,9 +190,12 @@ function prom() {
     let ciencias;
     let alumnoid = document.getElementById("id").value;
 
-    if (alumnoid > 50) {
-        alert("Ingresa un id válido. ");
-    } else {
+    if (alumnoid > salonLS.length){
+        alert("ingrese un id valido.")
+    }
+         
+    
+else {
 
         arraydemateria = [];
 
@@ -189,7 +210,7 @@ function prom() {
 
 
     };
-    ////////  PROMEDIO 
+    ////////  PROMEDIO    ///////
     if (salonLS===null){
     const escribeid = salon[(--alumnoid)] //OPTIMIZACION
     let contenedor1 = document.createElement("div");
