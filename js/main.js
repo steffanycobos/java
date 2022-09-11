@@ -47,7 +47,7 @@ const arrayEdades = [
 
 
 ////////////////////            FETCH                        //////////////////////
-function lista(){
+/*function lista(){
 fetch ('data/archivo.json')
 .then (response => response.json())
 .then ((archivo) => archivo.forEach((alumno) => {
@@ -57,10 +57,13 @@ fetch ('data/archivo.json')
      Edad: ${alumno.edad}</p>`;
     document.body.appendChild(li)
 }))}
+Hice una parte de fetch en donde a partir de un archivo JSON se accedia a los alumnos registrados y los mostraba en pantalla... No es muy útil en mi proyecto,
+dado que si registro un alumno nuevo, no estará en el archivo JSON, por ende no se mostrará, a diferencia de si lo guaro en el Local Storage. Tampoco pude conseguir una API acorde a lo que estoy haciendo.
+*/
 
 
 
-////////////////////////////////////                    FUNCIONES                  ////////////////////////////////////
+////////////////////////////////////                    FUNCIONES                 ////////////////////////////////////
 
 function eliminar(seccion) {
     seccion.onclick = () => {
@@ -74,34 +77,34 @@ function eliminar(seccion) {
 function nuevo() {
     nombre = String(document.getElementById("nombre").value).toLocaleUpperCase()
     edad = Number(document.getElementById("registroedad").value)
-    id = (arrayEdades.length) + 1 //OPTIMIZACION
-   
-    
-    if (nombre==!String || edad==! Number) { swal("Es necesario poner Nombre y Edad","" ,"warning");}
-    
-  
-    else{
-    arrayEdades.push({
-        id,
-        nombre,
-        edad
-    })
-    salon.push({
-        id,
-        nombre,
-        edad,
-        arraydemateria
-    })
-    localStorage.setItem("Salon", JSON.stringify(salon))
-    localStorage.setItem("Edad", JSON.stringify(arrayEdades))
-
-    swal("Ya quedaste registrado!", "Tu ID es: "+ id, "success");
-}}
-let arrayEdadesLS = JSON.parse(localStorage.getItem("Edad"))
-let salonLS = JSON.parse(localStorage.getItem("Salon"))
+    id = (arrayEdades.length) + 1
 
 
-/// Todo lo que hace el programa a partir de aqui lo hace con "salonLS" y "arrayEdadesLS" en caso de que se haya registrado un nuevo alumno
+    if (nombre == !String || edad == !Number) {
+        swal("Es necesario poner Nombre y Edad", "", "warning");
+    } else {
+        arrayEdades.push({
+            id,
+            nombre,
+            edad
+        })
+        salon.push({
+            id,
+            nombre,
+            edad,
+            arraydemateria
+        })
+        localStorage.setItem("Salon", JSON.stringify(salon));
+        localStorage.setItem("Edad", JSON.stringify(arrayEdades));
+
+        swal("Ya quedaste registrado.", "Tu ID es: " + id, "success");
+    }
+}
+let arrayEdadesLS = JSON.parse(localStorage.getItem("Edad"));
+let salonLS = JSON.parse(localStorage.getItem("Salon"));
+
+
+/*  A partir de aqui el programa trabaja con el array 'Salon'(si no se registro ningún alumno.) o con 'salonLS'(en caso de de que se haya registrado un nuevo alumno). Por eso utilicé el condicional if(salonLS== null) */
 
 
 
@@ -109,74 +112,76 @@ let salonLS = JSON.parse(localStorage.getItem("Salon"))
 
 //                                              LISTADO                                            ///
 function ordenAlfabetico() {
-    if (salonLS== null){
-    salon.sort((a, b) => {
-        if (a.nombre > b.nombre) {
-            return 1;
-        } else if (a.nombre < b.nombre) {
-            return -1;
-        } else {
-            return 0;
-        }
-    })
-    let alfabetico = document.createElement("p");
-    alfabetico.className = "eliminar"
-    alfabetico.innerHTML = (((salon.map((el) => el.nombre)).join("<br>")));;
-    document.body.append(alfabetico);
+    if (salonLS == null) {
+        salon.sort((a, b) => {
+            if (a.nombre > b.nombre) {
+                return 1;
+            } else if (a.nombre < b.nombre) {
+                return -1;
+            } else {
+                return 0;
+            }
+        })
+        let alfabetico = document.createElement("p");
+        alfabetico.className = "eliminar"
+        alfabetico.innerHTML = (((salon.map((el) => el.nombre)).join("<br>")));;
+        document.body.append(alfabetico);
 
-    eliminar(alfabetico)}
-    else {
+        eliminar(alfabetico)
+    } else {
         salonLS.sort((a, b) => {
-        if (a.nombre > b.nombre) {
-            return 1;
-        } else if (a.nombre < b.nombre) {
-            return -1;
-        } else {
-            return 0;
-        }
-    })}
+            if (a.nombre > b.nombre) {
+                return 1;
+            } else if (a.nombre < b.nombre) {
+                return -1;
+            } else {
+                return 0;
+            }
+        })
+    }
     let alfabetico = document.createElement("p");
     alfabetico.className = "eliminar"
     alfabetico.innerHTML = ((salonLS.map((el) => el.nombre.toLocaleUpperCase())).join("<br>"));
     document.body.append(alfabetico);
 
-    eliminar(alfabetico)}
-        
-    
+    eliminar(alfabetico)
+}
+
+
 
 
 function ordenNumerico() {
-    if (salonLS===null){
-    salon.sort((a, b) => {
-        if (a.edad > b.edad) {
-            return 1;
-        } else if (a.edad < b.edad) {
-            return -1;
-        } else {
-            return 0;
-        }
-    })
+    if (salonLS === null) {
+        salon.sort((a, b) => {
+            if (a.edad > b.edad) {
+                return 1;
+            } else if (a.edad < b.edad) {
+                return -1;
+            } else {
+                return 0;
+            }
+        })
 
-    let numerico = document.createElement("p");
-    numerico.innerHTML = ((salon.map((el) => el.nombre + " " + el.edad)).join("<br>"));
-    document.body.append(numerico);
-    eliminar(numerico)
+        let numerico = document.createElement("p");
+        numerico.innerHTML = ((salon.map((el) => el.nombre + " edad: " + el.edad)).join("<br>"));
+        document.body.append(numerico);
+        eliminar(numerico)
 
-} else{
-    salonLS.sort((a, b) => {
-    if (a.edad > b.edad) {
-        return 1;
-    } else if (a.edad < b.edad) {
-        return -1;
     } else {
-        return 0;
+        salonLS.sort((a, b) => {
+            if (a.edad > b.edad) {
+                return 1;
+            } else if (a.edad < b.edad) {
+                return -1;
+            } else {
+                return 0;
+            }
+        })
+        let numerico = document.createElement("p");
+        numerico.innerHTML = ((salonLS.map((el) => el.nombre + " " + el.edad)).join("<br>"));
+        document.body.append(numerico);
+        eliminar(numerico)
     }
-})
-let numerico = document.createElement("p");
-    numerico.innerHTML = ((salonLS.map((el) => el.nombre + " " + el.edad)).join("<br>"));
-    document.body.append(numerico);
-    eliminar(numerico)
-}
 
 }
 
@@ -190,156 +195,143 @@ function prom() {
     let ciencias;
     let alumnoid = document.getElementById("id").value;
 
-    if (alumnoid > salonLS.length){
-        alert("ingrese un id valido.")
-    }
-         
-    
-else {
+    if (alumnoid > salonLS.length) {
+        swal("Ingrese un ID válido", "", "warning");
+    } else {
 
         arraydemateria = [];
 
-        mate = Number(document.getElementById("mate").value)
-        fisica = Number(document.getElementById("fisica").value)
-        quimica = Number(document.getElementById("quimica").value)
-        ciencias = Number(document.getElementById("ciencias").value)
-        historia = Number(document.getElementById("historia").value)
-
+        mate = Number(document.getElementById("mate").value);
+        fisica = Number(document.getElementById("fisica").value);
+        quimica = Number(document.getElementById("quimica").value);
+        ciencias = Number(document.getElementById("ciencias").value);
+        historia = Number(document.getElementById("historia").value);
 
         arraydemateria.push(mate, fisica, quimica, ciencias, historia);
 
 
-    };
-    ////////  PROMEDIO    ///////
-    if (salonLS===null){
-    const escribeid = salon[(--alumnoid)] //OPTIMIZACION
-    let contenedor1 = document.createElement("div");
+        if ((mate == !Number) || fisica == !Number || quimica == !Number || ciencias == !Number || historia == !Number) {
+            swal("Te falto una materia", "", "warning")
+        }
+        ////////  PROMEDIO    ///////
+        else {
+            ;
+            if (salonLS === null) {
+                const escribeid = salon[(--alumnoid)]
+                let contenedor1 = document.createElement("div");
 
+                suma = (mate) + (fisica) + (quimica) + (ciencias) + (historia);
+                prome = suma / 5;
 
-    suma = (mate) + (fisica) + (quimica) + (ciencias) + (historia);
-    prome = suma / 5;
-
-    if (prome >= 5) {
-        let aprob = document.createElement("div");
-        aprob.className = "formatoEdad"
-        aprob.innerHTML = " Aprobaste con un promedio de: " + prome
-        document.body.appendChild(aprob);
-        eliminar(aprob)
-    } else {
-        let desaprob = document.createElement("div");
-        desaprob.className = "formatoEdad"
-        desaprob.innerHTML = " Desaprobaste. Tu promedio fue de: " + prome
-        document.body.appendChild(desaprob);
-        eliminar(desaprob)
-    }
-    contenedor1.innerHTML = `<p> Nombre: ${escribeid.nombre}<br>
+                if (prome >= 5) {
+                    let aprob = document.createElement("div");
+                    aprob.className = "formatoEdad"
+                    aprob.innerHTML = "Aprobaste con un promedio de:" + prome + ". ¡Felicidades! 🥳 "
+                    document.body.appendChild(aprob);
+                    eliminar(aprob)
+                } else {
+                    let desaprob = document.createElement("div");
+                    desaprob.className = "formatoEdad"
+                    desaprob.innerHTML = " Desaprobaste. Tu promedio fue de: " + prome
+                    document.body.appendChild(desaprob);
+                    eliminar(desaprob)
+                }
+                contenedor1.innerHTML = `<p> Nombre: ${escribeid.nombre}<br>
                                ID: ${escribeid.id}<br>
                               Edad: ${escribeid.edad}</p>`;
-    document.body.appendChild(contenedor1);
+                document.body.appendChild(contenedor1);
 
-    var inputPromedio = document.getElementById("enterprom");
-    inputPromedio.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById("promedio2").click();
-        }
-    });
-    eliminar(contenedor1)
-} else {
-    const escribeid = salonLS[(--alumnoid)] //OPTIMIZACION
-    let contenedor1 = document.createElement("div");
+                var inputPromedio = document.getElementById("enterprom");
+                inputPromedio.addEventListener("keypress", function (event) {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        document.getElementById("promedio2").click();
+                    }
+                });
+                eliminar(contenedor1)
+            } else {
+                const escribeid = salonLS[(--alumnoid)]
+                let contenedor1 = document.createElement("div");
 
 
-    suma = (mate) + (fisica) + (quimica) + (ciencias) + (historia);
-    prome = suma / 5;
+                suma = (mate) + (fisica) + (quimica) + (ciencias) + (historia);
+                prome = suma / 5;
 
-    if (prome >= 5) {
-        let aprob = document.createElement("div");
-        aprob.className = "formatoEdad"
-        aprob.innerHTML = " Aprobaste con un promedio de: " + prome
-        document.body.appendChild(aprob);
-        eliminar(aprob)
-    } else {
-        let desaprob = document.createElement("div");
-        desaprob.className = "formatoEdad"
-        desaprob.innerHTML = " Desaprobaste. Tu promedio fue de: " + prome
-        document.body.appendChild(desaprob);
-        eliminar(desaprob)
-    }
-    contenedor1.innerHTML = `<p> Nombre: ${escribeid.nombre}<br>
+                if (prome >= 5) {
+                    let aprob = document.createElement("div");
+                    aprob.className = "formatoEdad"
+                    aprob.innerHTML = "Aprobaste con un promedio de:" + prome + ". ¡Felicidades! 🥳 "
+                    document.body.appendChild(aprob);
+                    eliminar(aprob)
+                } else {
+                    let desaprob = document.createElement("div");
+                    desaprob.className = "formatoEdad"
+                    desaprob.innerHTML = " Desaprobaste. Tu promedio fue de: " + prome
+                    document.body.appendChild(desaprob);
+                    eliminar(desaprob)
+                }
+                contenedor1.innerHTML = `<p> Nombre: ${escribeid.nombre}<br>
                                ID: ${escribeid.id}<br>
                               Edad: ${escribeid.edad}</p>`;
-    document.body.appendChild(contenedor1);
+                document.body.appendChild(contenedor1);
 
-    var inputPromedio = document.getElementById("enterprom");
-    inputPromedio.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById("promedio2").click();
-        }
-    });
-    eliminar(contenedor1)
-}}
-
-
-////////////////////////////////////         EDADES             //////////////////////////////////////////////////////
-function edades() {
-    let ed = document.getElementById("edad").value;
-    if (arrayEdadesLS!= null){
-
-    const edad = arrayEdadesLS.filter((el) => el.edad == ed);
-    var inputEdad = document.getElementById("edad")
-    inputEdad.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById("edad2").click();
-        }
-    });
-
-    if (edad.length == 0) {
-         swal("No hay ningún alumno con " + ed +" años.","" ,"info");
-
-    } else {
-
-        for (const alumno of edad) {
-            let contenedor = document.createElement("div");
-
-            contenedor.innerHTML = `<p> Nombre: ${alumno.nombre} <br>
-                            ID: ${alumno.id}<br>
-                             Edad: ${alumno.edad}</p>`;
-            document.body.appendChild(contenedor);
-
-            eliminar(contenedor)
+                var inputPromedio = document.getElementById("enterprom");
+                inputPromedio.addEventListener("keypress", function (event) {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        document.getElementById("promedio2").click();
+                    }
+                });
+                eliminar(contenedor1)
+            }
         }
     }
 }
-else {
-    const edad = arrayEdades.filter((el) => el.edad == ed);
-    var inputEdad = document.getElementById("edad")
-    inputEdad.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById("edad2").click();
-        }
-    });
 
-    if (edad.length == 0) {
+////////////////////////////////////         EDADES             //////////////////////////////////////////////////////
 
-        let div1 = document.getElementById("edad1")
-        div1.innerHTML = "<h3>No hay nadie con esa edad</h3>"
+function edades() {
+    let ed = document.getElementById("edad").value;
+    if (arrayEdadesLS != null) {
 
-    } else {
+        const edad = arrayEdadesLS.filter((el) => el.edad == ed);
 
-        for (const alumno of edad) {
-            let contenedor = document.createElement("div");
+        if (edad.length == 0) {
+            swal("No hay ningún alumno con " + ed + " años.", "", "info");
 
-            contenedor.innerHTML = `<p> Nombre: ${alumno.nombre} <br>
+        } else {
+
+            for (const alumno of edad) {
+                let contenedor = document.createElement("div");
+                contenedor.innerHTML = `<p> Nombre: ${alumno.nombre} <br>
                             ID: ${alumno.id}<br>
                              Edad: ${alumno.edad}</p>`;
-            document.body.appendChild(contenedor);
+                document.body.appendChild(contenedor);
 
-            eliminar(contenedor)
+                eliminar(contenedor)
+            }
         }
-    }
+    } else {
+        const edad = arrayEdades.filter((el) => el.edad == ed);
 
-}}
+        if (edad.length == 0) {
+
+            let div1 = document.getElementById("edad1")
+            div1.innerHTML = "<h3>No hay nadie con esa edad</h3>"
+
+        } else {
+
+            for (const alumno of edad) {
+                let contenedor = document.createElement("div");
+
+                contenedor.innerHTML = `<p> Nombre: ${alumno.nombre} <br>
+                            ID: ${alumno.id}<br>
+                             Edad: ${alumno.edad}</p>`;
+                document.body.appendChild(contenedor);
+
+                eliminar(contenedor)
+            }
+        }
+
+    }
+}

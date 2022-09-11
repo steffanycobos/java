@@ -24,6 +24,7 @@ p {
     color: #000000;
     text-align: justify;
     margin: 10px;
+    border-radius: 5px;
 }
 
 
@@ -34,7 +35,7 @@ section {
 }
 
 .index {
-    margin-left: 16%;
+    margin-left: 20%;
     margin-top: 25px;
 }
 
@@ -84,6 +85,7 @@ body {
   border-color: #333;
   border: solid;
   padding: 15px;
+  margin:20px;
 }
 a{
   margin-top: 5px;
